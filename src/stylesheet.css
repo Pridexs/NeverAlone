@@ -37,10 +37,6 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 	padding-left: 2em;
 }
 
-#logo img {
-	
-}
-
 #gradient-div {
 	height: 48em;
 
@@ -71,4 +67,29 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
     width: 100%;
     background-color: #EB463C;
     border-top: solid black 2px;
+}
+
+/* EXCLUSIVE TO REGISTER.HTML */
+#content-center {
+	margin: auto;
+	text-align: center;
+	text-align: center;
+	border-left: solid #9A9A9A 2px;
+	border-right: solid #9A9A9A 2px;
+	min-width: 800px;
+	height: 100%;
+
+}
+#registerform  {
+	padding-top: 5em;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.pure-form .pure-group input {
+	display: inline-block !important;
+}
+
+#label-left {
+	
 }

@@ -32,7 +32,7 @@
         $row = $stmt->fetch();
         if($row) {
 
-        	$check_password = hash('sha256', $_POST['password'] . $row['salt']); 
+        	$check_password = hash('sha256', $_POST['password'] . $row['salt']);
         	for($round = 0; $round < 500; $round++) { 
                 $check_password = hash('sha256', $check_password . $row['salt']); 
             } 
@@ -90,12 +90,3 @@
 		</div>
 	</body>
 </html>
-
-<script type="text/javascript">
-
-function submitForm()
-{   
-    $("#pure-form").submit();
-}
-
-</script>
