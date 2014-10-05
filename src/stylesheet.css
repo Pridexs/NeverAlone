@@ -9,11 +9,20 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 
 #header {
 	position: relative;
-	background-color: #EB463C;
 	height: 5em;
 	min-width: 1000px;
 	overflow: auto;
 	border-bottom: 2px solid black;
+
+	background: #eb463c; /* Old browsers */
+background: -moz-linear-gradient(top,  #eb463c 0%, #bc3131 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eb463c), color-stop(100%,#bc3131)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #eb463c 0%,#bc3131 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #eb463c 0%,#bc3131 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #eb463c 0%,#bc3131 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #eb463c 0%,#bc3131 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb463c', endColorstr='#bc3131',GradientType=0 ); /* IE6-9 */
+
 }
 
 #main-header {
