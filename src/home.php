@@ -4,10 +4,10 @@
 ?>
 
 <html>
-	<head>
-	</head>
+    <head>
+    </head>
 
-	<body>
-		Success
-	</body>
+    <body>
+        Success
+    </body>
 </html>
