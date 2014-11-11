@@ -3,7 +3,78 @@
     require("adm\common.php");
 
     if(!empty($_POST)) {
+        $query = "SELECT 1 FROM users WHERE username = :username";
+        $query_params = array(
+            ':username' => $_POST['username']
+        );
 
+        try {
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+        } catch (PDOException $ex) {
+            die("Failed to run query");
+        }
+
+        $row = $stmt->fetch();
+        if ($row) {
+            $username_taken = true;
+        }
+
+        if(!$username_taken) {
+            $query = "SELECT 1 from users WHERE email = :email";
+            $query_params = array( 
+                ':email' => $_POST['email'] 
+            ); 
+             
+            try { 
+                $stmt = $db->prepare($query); 
+                $result = $stmt->execute($query_params); 
+            } 
+            catch(PDOException $ex) { 
+                die("Failed to run query."); 
+            } 
+             
+            $row = $stmt->fetch(); 
+             
+            if($row) { 
+                $email_taken = true;
+            }
+
+            if(!$email_taken) {
+                $query = "INSERT INTO users (username, password, salt, email) VALUE (:username, :password, :salt, :email)";
+
+                $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+                $password = hash('sha256', $_POST['password'] . $salt); 
+
+                //65536 was the number used
+                for($round = 0; $round < 500; $round++) 
+                { 
+                    $password = hash('sha256', $password . $salt); 
+                } 
+
+                $query_params = array( 
+                    ':username' => $_POST['username'], 
+                    ':password' => $password, 
+                    ':salt' => $salt, 
+                    ':email' => $_POST['email'] 
+                ); 
+
+                try 
+                { 
+                    $stmt = $db->prepare($query); 
+                    $result = $stmt->execute($query_params); 
+                } 
+                catch(PDOException $ex) 
+                { 
+                    die("Failed to run query."); 
+                } 
+
+                header("Location: login.php"); 
+
+                die("Redirecting to login.php"); 
+
+            }
+        }
     }
 ?>
 
@@ -19,12 +90,12 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
     <link rel="stylesheet" href="css/marketing.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-	
-	<script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
-	
+    
+    <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" media="all" />
-	
+    
 </head>
 
 <body>
@@ -80,9 +151,9 @@
                 <label>Day<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" required=""></label>
                 <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>
             </fieldset>
-			
+            
             <select id="estado" class="select-style gender" name="estado">
-				
+                
             </select><br><br>
 
             <select id="cidade" class="select-style gender" name="cidade">

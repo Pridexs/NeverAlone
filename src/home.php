@@ -1,11 +1,24 @@
 <?php 
     require("adm\common.php"); 
     
-    if(empty($_SESSION['user'])) 
-    { 
+    if(empty($_SESSION['user'])) { 
         header("Location: login.php"); 
         die("Redirecting to login.php"); 
+    }
+     
+    $query = "SELECT id, category, note_text FROM notes where username = :username";
+    $query_params = array( 
+            ':username' => $_SESSION['user']['username'] 
+    );
+
+    try { 
+        $stmt = $db->prepare($query); 
+        $result = $stmt->execute($query_params); 
     } 
+    catch(PDOException $ex) { 
+        // Change this later
+        die("Failed to run query."); 
+    }
 
 ?> 
 
