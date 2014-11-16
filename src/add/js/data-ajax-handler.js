@@ -27,3 +27,10 @@ function add(value) {
         $('#saida').html(returnData);
     });
 }
+
+function remover(tabela, value) {
+    $.get('add/data/exclui-entretenimento.php?value='+ value + '&tabela=' + tabela, function(returnData) {
+        $('#saida').html(returnData);
+    });
+}
+

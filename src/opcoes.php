@@ -42,7 +42,7 @@
                 <ul>
                     <li ><a href="home.php">Página Inicial</a></li>
                     <li><a href="addentretenimento.php">Adicionar Entretenimento</a></li>
-                    <li><a href="#">Excluir Entretenimento</a></li>
+                    <li><a href="listaentretenimento.php">Lista Entretenimento</a></li>
                     <li><a href="#">Buscar Usuários</a></li>
                     <li class="menu-item-divided pure-menu-selected"><a href="#">Opções</a></li>
                 </ul>

@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="css/grid_sytles.css">
 
 
-    <script  type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    <script  type="text/javascript" src="js/jquery-search.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script  type="text/javascript" src="js/data-ajax-handler.js"></script>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                 <ul>
                     <li ><a href="../home.php">Página Inicial</a></li>
                     <li class="menu-item-divided pure-menu-selected"><a href="../addentretenimento.php">Adicionar Entretenimento</a></li>
-                    <li><a href="#">Excluir Entretenimento</a></li>
+                    <li><a href="../listaentretenimento.php">Lista Entretenimento</a></li>
                     <li><a href="#">Buscar Usuários</a></li>
                     <li><a href="../opcoes.php">Opções</a></li>
                 </ul>
