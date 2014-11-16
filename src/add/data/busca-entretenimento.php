@@ -26,7 +26,7 @@
             $sResults .= '<td>' . $row['tipo'] . '</td>';
             $sResults .= '<td>' . $row['tema'] . '</td>';
             $sResults .= '<td>' . $row['ano'] . '</td>';
-            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button">+</button</center></td></tr>';
+            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button" onclick="add(this.value)">+</button</center></td></tr>';
         }
         echo $sResults;
     }
@@ -52,7 +52,7 @@
             $sResults .= '<td>' . $row['tipoJogo'] . '</td>';
             $sResults .= '<td>' . $row['qtdParticipantes'] . '</td>';
             $sResults .= '<td>' . $row['temaJogo'] . '</td>';
-            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button">+</button</center></td></tr>';
+            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button" onclick="add(this.value)">+</button</center></td></tr>';
         }
         echo $sResults;
     }
@@ -76,7 +76,7 @@
             $sResults .= '<tr id="'. $row['ID'] . '">';
             $sResults .= '<td>' . $row['nome'] . '</td>';
             $sResults .= '<td>' . $row['qtdParticipantes'] . '</td>';
-            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button">+</button</center></td></tr>';
+            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button" onclick="add(this.value)">+</button</center></td></tr>';
         }
         echo $sResults;
     }
@@ -103,7 +103,7 @@
             $sResults .= '<td>' . $row['tema'] . '</td>';
             $sResults .= '<td>' . $row['qtdParticipantes'] . '</td>';
             $sResults .= '<td>' . $row['dadosAdicionais'] . '</td>';
-            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button">+</button</center></td></tr>';
+            $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button" onclick="add(this.value)">+</button</center></td></tr>';
         }
         echo $sResults;
     }

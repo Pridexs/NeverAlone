@@ -25,7 +25,6 @@
 
 
     <script  type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
-    <script  type="text/javascript" src="js/jquery-ui-1.7.custom.min.js"></script>
     <script  type="text/javascript" src="js/jquery-search.js"></script>
 </head>
 
@@ -87,6 +86,7 @@
                             <div class="grid-results">Resultados </div>
                         </div>
                     </div>
+                    <p id="saida"></p>
                 </div>
             </div>
         </div>

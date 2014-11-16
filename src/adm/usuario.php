@@ -9,7 +9,6 @@ class Usuario {
        $this->_id = $id;
     }
 
-
     public function getNome($db) {
         $query = "SELECT nome FROM users WHERE email = :email";
         $query_params = array(
@@ -27,6 +26,10 @@ class Usuario {
 
         $rows = $stmt->fetch();
         return $rows['nome'];
+    }
+
+    public function getID() {
+        return $this->_id;
     }
 }
 

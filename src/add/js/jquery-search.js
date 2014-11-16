@@ -17,7 +17,13 @@
             } else {
                 $('#results').html('<p style="padding:5px;">Adicione um termo para a pesquisa.</p>');
             }
-
         });
 
     });
+
+function add(value) {
+    var location = window.location.pathname.split('/').slice(-1)[0];
+    $.get('data/add-entretenimento.php?value='+ value + '&location=' + location, function(returnData) {
+        $('#saida').html(returnData);
+    });
+}
