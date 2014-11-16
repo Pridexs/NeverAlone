@@ -1,7 +1,6 @@
 <?php
     
-    //Essas informações são do meu server local pra teste.
-    //Estou usando o XAMPP caso queiram criar um server local.
+    require ("usuario.php");
 
     //Database Information 
     $username = "root";

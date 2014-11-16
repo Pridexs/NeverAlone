@@ -1,65 +1,91 @@
--- phpMyAdmin SQL Dump
--- version 4.2.7.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: 10-Out-2014 às 17:38
--- Versão do servidor: 5.6.20
--- PHP Version: 5.5.15
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `na_main`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `users`
---
-
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` char(64) COLLATE utf8_unicode_ci NOT NULL,
-  `salt` char(16) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`password` char(64) COLLATE utf8_unicode_ci NOT NULL,
+	`salt` char(16) COLLATE utf8_unicode_ci NOT NULL,
+	`email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+	`nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+	`estado` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+	`cidade` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+	`pais` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+	`dataNasc` date COLLATE utf8_unicode_ci NOT NULL,
+	`sexo` char(1) COLLATE utf8_unicode_ci NOT NULL,
+	`numeroCelular` char(20) COLLATE utf8_unicode_ci NOT NULL,
+	PRIMARY KEY (id, email)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `users`
---
+CREATE TABLE `Jogos` (
+	`ID` int(11) NOT NULL AUTO_INCREMENT,
+	`nome` varchar(50) NOT NULL,
+	`tipoJogo` varchar(50) NOT NULL,
+	`qtdParticipantes` int(30) NOT NULL,
+	`temaJogo` varchar(50) NOT NULL,
+	PRIMARY KEY (ID),
+	);
 
-INSERT INTO `users` (`id`, `username`, `password`, `salt`, `email`) VALUES
-(3, 'pridexs', '30fd700af2ae2bd22651f4a5f17ad26d30803368231282e62cdd4726dcceb81e', '102c53077a1e721', 'alehstk@gmail.com');
+CREATE TABLE `Esportes` (
+	`ID` int(11) NOT NULL AUTO_INCREMENT,
+	`nome` varchar(50) NOT NULL,
+	`qtdParticipantes` int(50) NOT NULL,
+	PRIMARY KEY (ID)
+);
 
---
--- Indexes for dumped tables
---
+CREATE TABLE `Filmes` (
+	`ID` int(11) NOT NULL AUTO_INCREMENT,
+	`ano` int(4) NOT NULL,
+	`tipo` varchar(50) NOT NULL,
+	`tema` varchar(50) NOT NULL,
+	`nome` varchar(40) NOT NULL,
+	PRIMARY KEY (ID)
+);
 
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`), ADD UNIQUE KEY `email` (`email`);
+CREATE TABLE `Outros` (
+	`ID` int(11) NOT NULL AUTO_INCREMENT,
+	`nome` varchar(40) NOT NULL,
+	`tipo` varchar(40) NOT NULL,
+	`tema` varchar(40) NOT NULL,
+	`qtdParticipantes` int(30) NOT NULL,
+	`dadosAdicionais` varchar(50) NOT NULL,
+	PRIMARY KEY (ID)
+);
 
---
--- AUTO_INCREMENT for dumped tables
---
+CREATE TABLE `UsuarioJogos` (
+	`IDUsuario` int(11) NOT NULL,
+	`IDJogo` int(11) NOT NULL,
+	PRIMARY KEY (IDUsuario, IDJogo),
+	FOREIGN KEY IDUsuario REFERENCES users(ID),
+	FOREIGN KEY (IDJogo) REFERENCES Jogos(ID)
+);
 
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `UsuarioFilmes` (
+	`IDUsuario` int(11) NOT NULL,
+	`IDFilme` int(11) NOT NULL,
+	PRIMARY KEY (IDUsuario, IDFilme),
+	FOREIGN KEY (IDUsuario) REFERENCES users(ID),
+	FOREIGN KEY (IDFilme) REFERENCES Filmes(ID)
+);
+
+CREATE TABLE `UsuarioEsportes` (
+	`IDUsuario` int(11) NOT NULL,
+	`IDEsporte` int(11) NOT NULL,
+	PRIMARY KEY (IDUsuario, IDEsporte),
+	FOREIGN KEY (IDUsuario) REFERENCES users(ID),
+	FOREIGN KEY (IDEsporte) References Esportes(ID)
+);
+
+CREATE TABLE `UsuarioOutros` (
+	`IDUsuario` int(11) NOT NULL,
+	`IDOutro` int(11) NOT NULL,
+	PRIMARY KEY (IDUsuario, IDOutro),
+	FOREIGN KEY (IDUsuario) REFERENCES users(ID),
+	FOREIGN KEY (IDEsporte) REFERENCES Outros(ID)
+);
+
+
+#CREATE TABLE `Entretenimento` (
+#	`ID` int(11) NOT NULL,
+#	`filme` varchar(50) NOT NULL,
+#	`jogo` varchar(50) NOT NULL,
+#	`esporte` varchar(50) NOT NULL,
+#	`outro` varchar(50) NOT NULL,
+#	PRIMARY KEY (ID)
+#);

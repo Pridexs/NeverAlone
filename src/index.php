@@ -8,15 +8,15 @@
         $q = $_GET['q'];
     }    
 
-    $submitted_username = '';
+    $submitted_email = '';
 
     $login_failed = false;
 
     if(!empty($_POST)) {
 
-        $query = "SELECT id, username, password, salt, email from users WHERE username = :username";
+        $query = "SELECT id, nome, password, salt, email FROM users WHERE email = :email";
         $query_params = array( 
-            ':username' => $_POST['username'] 
+            ':email' => $_POST['email'] 
         ); 
 
         try { 
@@ -24,7 +24,7 @@
             $result = $stmt->execute($query_params); 
         } 
         catch(PDOException $ex) { 
-            die("Failed to run query."); 
+            die("Failed to run query." . $ex); 
         } 
 
         $login_ok = false;
@@ -48,11 +48,11 @@
             
             $_SESSION['user'] = $row;
 
-            header("Location: home.php");
-            die("Redirecting to: notes.php");
+            header("Location: login.php");
+            die("Redirecting to: login.php");
         } else {
             $login_failed = true;
-            $submitted_username = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8'); 
+            $submitted_email = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8'); 
         }
     }
 ?>
@@ -95,7 +95,7 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </p>
         <p>
-            <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+            <a href="register.php" class="pure-button pure-button-primary">Get Started</a>
         </p>
     </div>
 </div>
@@ -128,8 +128,8 @@
                 <form class="pure-form pure-form-stacked" method="post">
                     <fieldset>
 
-                        <label for="name">Username</label>
-                        <input id="name" name="username" type="text" placeholder="Username">
+                        <label for="name">Email</label>
+                        <input id="name" name="email" type="text" placeholder="Username">
 
                         <label for="password">Password</label>
                         <input id="password" name="password" type="password" placeholder="Password">

@@ -2,83 +2,73 @@
 
     require("adm\common.php");
 
+
     if(!empty($_POST)) {
-        $query = "SELECT 1 FROM users WHERE username = :username";
-        $query_params = array(
-            ':username' => $_POST['username']
-        );
 
-        try {
+        $query = "SELECT 1 from users WHERE email = :email";
+        $query_params = array( 
+            ':email' => $_POST['email'] 
+        ); 
+         
+        try { 
             $stmt = $db->prepare($query); 
-            $result = $stmt->execute($query_params);
-        } catch (PDOException $ex) {
-            die("Failed to run query");
+            $result = $stmt->execute($query_params); 
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query."); 
+        } 
+         
+        $row = $stmt->fetch(); 
+        $email_taken = false; 
+        if($row) { 
+            $email_taken = true;
         }
 
-        $row = $stmt->fetch();
-        if ($row) {
-            $username_taken = true;
-        }
+        if(!$email_taken) {
+            $query = "INSERT INTO users (password, salt, email, nome, estado, cidade, dataNasc, sexo, numeroCelular) VALUE (:password, :salt, :email, :nome, :estado, :cidade, :dataNasc, :sexo, :numeroCelular)";
 
-        if(!$username_taken) {
-            $query = "SELECT 1 from users WHERE email = :email";
+            $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+            $password = hash('sha256', $_POST['password'] . $salt); 
+
+            //65536 was the number used
+            for($round = 0; $round < 500; $round++)
+            {
+                $password = hash('sha256', $password . $salt); 
+            }
+
+            $dataNascimento = $_POST['BirthYear'] . '/' . $_POST['BirthMonth'] . '/' . $_POST['BirthMonth'];
+
             $query_params = array( 
-                ':email' => $_POST['email'] 
-            ); 
-             
-            try { 
+                ':password' => $password, 
+                ':salt' => $salt, 
+                ':email' => $_POST['email'],
+                ':nome' => $_POST['nome'],
+                ':numeroCelular' => $_POST['numeroCelular'],
+                ':estado' => $_POST['estado'],
+                ':cidade' => $_POST['cidade'],
+                ':sexo' => $_POST['gender'],
+                ':dataNasc' => $dataNascimento
+            );
+
+            try     
+            { 
                 $stmt = $db->prepare($query); 
                 $result = $stmt->execute($query_params); 
             } 
-            catch(PDOException $ex) { 
-                die("Failed to run query."); 
+            catch(PDOException $ex) 
+            { 
+                die("Failed to run query." . $ex); 
             } 
-             
-            $row = $stmt->fetch(); 
-             
-            if($row) { 
-                $email_taken = true;
-            }
 
-            if(!$email_taken) {
-                $query = "INSERT INTO users (username, password, salt, email) VALUE (:username, :password, :salt, :email)";
+            header("Location: index.php"); 
 
-                $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
-                $password = hash('sha256', $_POST['password'] . $salt); 
+            die("Redirecting to index.php"); 
 
-                //65536 was the number used
-                for($round = 0; $round < 500; $round++) 
-                { 
-                    $password = hash('sha256', $password . $salt); 
-                } 
-
-                $query_params = array( 
-                    ':username' => $_POST['username'], 
-                    ':password' => $password, 
-                    ':salt' => $salt, 
-                    ':email' => $_POST['email'] 
-                ); 
-
-                try 
-                { 
-                    $stmt = $db->prepare($query); 
-                    $result = $stmt->execute($query_params); 
-                } 
-                catch(PDOException $ex) 
-                { 
-                    die("Failed to run query."); 
-                } 
-
-                header("Location: login.php"); 
-
-                die("Redirecting to login.php"); 
-
-            }
         }
     }
 ?>
 
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,6 +82,7 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     
     <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+    <!--<script type="text/javascript" src="js/cidades-estados-v0.2.js"></script>-->
     
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" media="all" />
@@ -114,42 +105,39 @@
 
 <div class="container">
     <div class="register-form">
-        <form id="contactform"> 
+        <form method="post" id="registerForm"> 
             <p class="contact"><label for="name">Name</label></p> 
-            <input id="name" name="name" placeholder="First and last name" required="" tabindex="1" type="text"> 
+            <input id="name" name="nome" placeholder="Nome e Sobrenome" required="" tabindex="1" type="text"> 
              
             <p class="contact"><label for="email">Email</label></p> 
-            <input id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
-
-            <p class="contact"><label for="username">Create a username</label></p> 
-            <input id="username" name="username" placeholder="username" required="" tabindex="2" type="text"> 
+            <input id="email" name="email" placeholder="exemplo@dominio.com" required="" type="email"> 
              
-            <p class="contact"><label for="password">Create a password</label></p> 
+            <p class="contact"><label for="password">Senha</label></p> 
             <input type="password" id="password" name="password" required=""> 
-            <p class="contact"><label for="repassword">Confirm your password</label></p> 
-            <input type="password" id="repassword" name="repassword" required=""> 
 
-            <fieldset>
-                <label>Birthday</label>
+            <p class="contact"><label for="numeroCelular">Numero Celular</label></p> 
+            <input id="numeroCelular" name="numeroCelular" required=""> 
+
+            <fieldset> 
+                <label>Dia<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Dia" required=""></label>
+                <label>Mês</label>
                 <label class="month"> 
                 <select class="select-style" name="BirthMonth">
-                <option value="">Month</option>
-                <option  value="01">January</option>
-                <option value="02">February</option>
-                <option value="03" >March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12" >December</option>
+                <option  value="01">Janeiro</option>
+                <option value="02">Fevereiro</option>
+                <option value="03" >Março</option>
+                <option value="04">Abril</option>
+                <option value="05">Maio</option>
+                <option value="06">Junho</option>
+                <option value="07">Julho</option>
+                <option value="08">Agosto</option>
+                <option value="09">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12" >Dezembro</option>
                 </label>
-                </select>    
-                <label>Day<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" required=""></label>
-                <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>
+                </select>   
+                <label>Ano<input class="birthyear" maxlength="4" name="BirthYear" placeholder="Ano" required=""></label>
             </fieldset>
             
             <select id="estado" class="select-style gender" name="estado">
@@ -161,13 +149,13 @@
             </select><br><br>
 
             <select class="select-style gender" name="gender">
-                <option value="select">i am..</option>
-                <option value="m">Male</option>
-                <option value="f">Female</option>
-                <option value="others">Other</option>
+                <option value="select"></option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+                <option value="O">Outro</option>
             </select><br><br>
 
-            <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit">      
+            <input class="buttom" name="submit" id="submit" tabindex="5" value="Registrar!" type="submit">      
         </form> 
     </div>
 </div>
