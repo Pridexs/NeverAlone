@@ -9,6 +9,33 @@
     $usuario = $_SESSION['usuario'];
     $nome = $usuario->getNome($db);
 
+    $registered = false;
+
+    // Cadastro de Outro
+    if(!empty($_POST)) {
+        $nome_parametro = $_POST['nome'];
+        $tipo = $_POST['tipo'];
+        $tema = $_POST['tema'];
+        $qtdParticipantes = $_POST['qtdParticipantes'];
+        $adicionais = $_POST['adicionais'];
+
+        $query = "INSERT INTO Outros (`nome`, `tipo`, `qtdParticipantes`, `tema`, `dadosAdicionais`) VALUES (:nome, :tipo, :qtdParticipantes, :tema, :adicionais)";
+        $query_params = array(
+            ':nome' => $nome_parametro,
+            ':tipo' => $tipo,
+            ':qtdParticipantes' => $qtdParticipantes,
+            ':tema' => $tema,
+            ':adicionais' => $adicionais
+        );
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+            $registered = true;
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query." . $ex); 
+        }
+    }
 ?> 
 
 <html lang="en">
@@ -87,10 +114,43 @@
                         </div>
                     </div>
                     <p id="saida"></p>
+                    <p>Não encontrou o que queria ? <button id="buttonshow" class="pure-button" onClick="toggleForm()" >Adicione!</button></p>
+                    <div id="cadastroform">
+                        <form method="post" id="registerForm"> 
+                            <p class="contact"><label for="nome">Nome</label></p> 
+                            <input id="name" name="nome" placeholder="Nome" required="" tabindex="1" type="text">
+
+                            <p class="contact"><label for="tipo">Tipo</label></p> 
+                            <input id="name" name="tipo" placeholder="Tipo" required="" tabindex="1" type="text"> 
+
+                            <p class="contact"><label for="tema">Tema</label></p> 
+                            <input id="name" name="tema" placeholder="Tema" required="" tabindex="1" type="text"> 
+                             
+                            <p class="contact"><label for="qtdParticipantes">Quantidade Particiapntes</label></p> 
+                            <input type="number" name="qtdParticipantes">
+
+                            <p class="contact"><label for="adicionais">Adicionais</label></p> 
+                            <input id="name" name="adicionais" placeholder="Adicionais" required="" tabindex="1" type="text"> 
+
+                            <input class="pure-button" name="submit" id="submit" tabindex="5" value="Registrar!" type="submit">
+                        </form>
+                    </div>
+                    <?php if($registered) echo '<p>Registrado com sucesso!</p>'; ?>
                 </div>
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#cadastroform").toggle();
+    });
+
+    function toggleForm() {
+        $("#cadastroform").toggle();
+    }
+    
+</script>
 
 </body>
 </html>

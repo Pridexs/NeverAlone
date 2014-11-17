@@ -50,13 +50,11 @@
                 ':dataNasc' => $dataNascimento
             );
 
-            try     
-            { 
+            try  { 
                 $stmt = $db->prepare($query); 
                 $result = $stmt->execute($query_params); 
             } 
-            catch(PDOException $ex) 
-            { 
+            catch(PDOException $ex) { 
                 die("Failed to run query." . $ex); 
             } 
 
