@@ -130,9 +130,6 @@
                     <thead>
                         <tr>
                             <th class="ui-state-default">Nome</th>
-                            <th class="ui-state-default">Tpo</th>
-                            <th class="ui-state-default">Tema</th>
-                            <th class="ui-state-default">Qtd Participantes</th>
                             <th class="ui-state-default">Dados Adicionais</th>
                             <th class="ui-state-default">Remover</th>
                         </tr>
@@ -141,9 +138,6 @@
                         <?php foreach($listaOutros as $row): ?>
                             <?php echo ('<tr id="' . $row['ID'] . '">') ; ?>
                             <?php echo ('<td>' . $row['nome'] . '</td>'); ?>
-                            <?php echo ('<td>' . $row['tipo'] . '</td>'); ?>
-                            <?php echo ('<td>' . $row['tema'] . '</td>'); ?>
-                            <?php echo ('<td>' . $row['qtdParticipantes'] . '</td>'); ?>
                             <?php echo ('<td>' . $row['dadosAdicionais'] . '</td>'); ?>
                             <?php echo ('<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button" onclick="remover(\'outros\', this.value)">-</button</center></td></tr>'); ?>
                         <?php endforeach ?>

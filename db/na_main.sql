@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Nov-2014 às 19:08
+-- Generation Time: 19-Nov-2014 às 17:20
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `esportes` (
   `nome` varchar(50) NOT NULL,
   `qtdParticipantes` int(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `esportes`
@@ -41,7 +41,9 @@ CREATE TABLE IF NOT EXISTS `esportes` (
 
 INSERT INTO `esportes` (`ID`, `nome`, `qtdParticipantes`) VALUES
 (1, 'Natacao', 5),
-(2, 'Golf', 5);
+(2, 'Golf', 5),
+(3, 'Corrida', 2),
+(4, 'Volei', 12);
 
 -- --------------------------------------------------------
 
@@ -56,15 +58,17 @@ CREATE TABLE IF NOT EXISTS `filmes` (
   `tema` varchar(50) NOT NULL,
   `nome` varchar(40) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `filmes`
 --
 
 INSERT INTO `filmes` (`ID`, `ano`, `tipo`, `tema`, `nome`) VALUES
-(1, 19, 'Acao', 'Comedia', 'As longas tranças'),
-(2, 98, 'Whatever1', 'Whatever2', 'As Longas Rodas');
+(3, 2000, 'Comédia', 'Aventura', 'Jumanji'),
+(4, 2002, 'Action', 'Spy', 'The Bourne Identity'),
+(5, 2012, 'Aventura', 'Fantasia', 'O Hobbit'),
+(6, 2014, 'Aventura', 'Sci-Fi', 'Guardiões da Galáxia');
 
 -- --------------------------------------------------------
 
@@ -79,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `jogos` (
   `qtdParticipantes` int(30) NOT NULL,
   `temaJogo` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `jogos`
@@ -87,7 +91,8 @@ CREATE TABLE IF NOT EXISTS `jogos` (
 
 INSERT INTO `jogos` (`ID`, `nome`, `tipoJogo`, `qtdParticipantes`, `temaJogo`) VALUES
 (1, 'Skyrim', 'RPG', 1, 'Medieval'),
-(2, 'Sword Art', 'RPG', 2, 'Technology');
+(2, 'Sword Art', 'RPG', 2, 'Technology'),
+(3, 'SpeedRunners', 'Corrida', 4, 'Corrida');
 
 -- --------------------------------------------------------
 
@@ -98,19 +103,17 @@ INSERT INTO `jogos` (`ID`, `nome`, `tipoJogo`, `qtdParticipantes`, `temaJogo`) V
 CREATE TABLE IF NOT EXISTS `outros` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
-  `tipo` varchar(40) NOT NULL,
-  `tema` varchar(40) NOT NULL,
-  `qtdParticipantes` int(30) NOT NULL,
   `dadosAdicionais` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `outros`
 --
 
-INSERT INTO `outros` (`ID`, `nome`, `tipo`, `tema`, `qtdParticipantes`, `dadosAdicionais`) VALUES
-(1, 'Dançar', 'Swing', 'Casual', 2, '+18');
+INSERT INTO `outros` (`ID`, `nome`, `dadosAdicionais`) VALUES
+(1, 'Tim Minchin', 'Músico/Comediante'),
+(2, 'B. B. King', 'Músico');
 
 -- --------------------------------------------------------
 
@@ -131,14 +134,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `sexo` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `numeroCelular` char(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `password`, `salt`, `email`, `nome`, `estado`, `cidade`, `pais`, `dataNasc`, `sexo`, `numeroCelular`) VALUES
-(1, '00701d7d9310bbaa3b030979ad0d827a81065eba8f719f2480aaf6ec1b9a3e66', '37a20f5d540a393e', 'alehstk@gmail.com', 'Alexandre Maros', 'SC', 'Rio Negrinho', '', '1995-01-01', 'M', '4792318900');
+(1, '00701d7d9310bbaa3b030979ad0d827a81065eba8f719f2480aaf6ec1b9a3e66', '37a20f5d540a393e', 'alehstk@gmail.com', 'Alexandre Maros', 'SC', 'Rio Negrinho', '', '1995-01-01', 'M', '4792318900'),
+(2, '9aaf76b3280d2319f719871b7056c2c71ab11ad49aa1c8adbe877228034c7747', '63b0054cac29f78', 'grott.aurelio@gmail.com', 'Aurelio Grott Neto', 'SC', 'Laguna', '', '1995-05-05', 'M', '+554899617317');
 
 -- --------------------------------------------------------
 
@@ -178,8 +182,9 @@ CREATE TABLE IF NOT EXISTS `usuariofilmes` (
 --
 
 INSERT INTO `usuariofilmes` (`IDUsuario`, `IDFilme`) VALUES
-(1, 1),
-(1, 2);
+(2, 4),
+(1, 5),
+(1, 6);
 
 -- --------------------------------------------------------
 
@@ -199,7 +204,9 @@ CREATE TABLE IF NOT EXISTS `usuariojogos` (
 --
 
 INSERT INTO `usuariojogos` (`IDUsuario`, `IDJogo`) VALUES
-(1, 2);
+(1, 1),
+(1, 2),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -245,13 +252,6 @@ ALTER TABLE `usuariofilmes`
 ALTER TABLE `usuariojogos`
   ADD CONSTRAINT `usuariojogos_ibfk_1` FOREIGN KEY (`IDUsuario`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `usuariojogos_ibfk_2` FOREIGN KEY (`IDJogo`) REFERENCES `jogos` (`ID`);
-
---
--- Limitadores para a tabela `usuariooutros`
---
-ALTER TABLE `usuariooutros`
-  ADD CONSTRAINT `usuariooutros_ibfk_1` FOREIGN KEY (`IDUsuario`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `usuariooutros_ibfk_2` FOREIGN KEY (`IDOutro`) REFERENCES `outros` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

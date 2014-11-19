@@ -99,9 +99,6 @@
         foreach($data as $row) {
             $sResults .= '<tr id="'. $row['ID'] . '">';
             $sResults .= '<td>' . $row['nome'] . '</td>';
-            $sResults .= '<td>' . $row['tipo'] . '</td>';
-            $sResults .= '<td>' . $row['tema'] . '</td>';
-            $sResults .= '<td>' . $row['qtdParticipantes'] . '</td>';
             $sResults .= '<td>' . $row['dadosAdicionais'] . '</td>';
             $sResults .= '<td><center><button type="submit" value = "' . $row['ID'] . '" class="pure-button" onclick="add(this.value)">+</button</center></td></tr>';
         }

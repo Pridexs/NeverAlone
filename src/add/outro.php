@@ -14,17 +14,11 @@
     // Cadastro de Outro
     if(!empty($_POST)) {
         $nome_parametro = $_POST['nome'];
-        $tipo = $_POST['tipo'];
-        $tema = $_POST['tema'];
-        $qtdParticipantes = $_POST['qtdParticipantes'];
         $adicionais = $_POST['adicionais'];
 
-        $query = "INSERT INTO Outros (`nome`, `tipo`, `qtdParticipantes`, `tema`, `dadosAdicionais`) VALUES (:nome, :tipo, :qtdParticipantes, :tema, :adicionais)";
+        $query = "INSERT INTO Outros (`nome`, `dadosAdicionais`) VALUES (:nome, :adicionais)";
         $query_params = array(
             ':nome' => $nome_parametro,
-            ':tipo' => $tipo,
-            ':qtdParticipantes' => $qtdParticipantes,
-            ':tema' => $tema,
             ':adicionais' => $adicionais
         );
         try { 
@@ -100,9 +94,6 @@
                             <thead>
                                 <tr>
                                     <th class="ui-state-default">Nome</th>
-                                    <th class="ui-state-default">Tipo</th>
-                                    <th class="ui-state-default">Tema</th>
-                                    <th class="ui-state-default">Qtd Participantes</th>
                                     <th class="ui-state-default">Adicionais</th>
                                     <th class="ui-state-default">Adicionar</th>
                                 </tr>
@@ -119,15 +110,6 @@
                         <form method="post" id="registerForm"> 
                             <p class="contact"><label for="nome">Nome</label></p> 
                             <input id="name" name="nome" placeholder="Nome" required="" tabindex="1" type="text">
-
-                            <p class="contact"><label for="tipo">Tipo</label></p> 
-                            <input id="name" name="tipo" placeholder="Tipo" required="" tabindex="1" type="text"> 
-
-                            <p class="contact"><label for="tema">Tema</label></p> 
-                            <input id="name" name="tema" placeholder="Tema" required="" tabindex="1" type="text"> 
-                             
-                            <p class="contact"><label for="qtdParticipantes">Quantidade Particiapntes</label></p> 
-                            <input type="number" name="qtdParticipantes">
 
                             <p class="contact"><label for="adicionais">Adicionais</label></p> 
                             <input id="name" name="adicionais" placeholder="Adicionais" required="" tabindex="1" type="text"> 
