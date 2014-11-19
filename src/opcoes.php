@@ -11,6 +11,61 @@
 
     if(isset($_POST["excluir_conta"])) {
         # delete account
+        $id = $usuario->getID();
+        $query_params = array(
+            ':idusuario' => $id
+        );
+
+
+        $query = "DELETE FROM usuarioesportes WHERE IDUsuario = :idusuario";
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query." . $ex); 
+        }
+
+
+        $query = "DELETE FROM usuariooutros WHERE IDUsuario = :idusuario";
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query." . $ex); 
+        }
+
+        $query = "DELETE FROM usuariofilmes WHERE IDUsuario = :idusuario";
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query." . $ex); 
+        }
+
+        $query = "DELETE FROM usuariojogos WHERE IDUsuario = :idusuario";
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query." . $ex); 
+        }
+
+        $query = "DELETE FROM users WHERE ID = :idusuario";
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params);
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query." . $ex);
+        }
+
+        session_destroy();
+        header("Location: index.php"); 
+        die("home.php"); 
     }
 
 
@@ -43,7 +98,7 @@
                     <li ><a href="home.php">Página Inicial</a></li>
                     <li><a href="addentretenimento.php">Adicionar Entretenimento</a></li>
                     <li><a href="listaentretenimento.php">Lista Entretenimento</a></li>
-                    <li><a href="#">Buscar Usuários</a></li>
+                    <li><a href="buscarusuario.php">Buscar Usuários</a></li>
                     <li class="menu-item-divided pure-menu-selected"><a href="#">Opções</a></li>
                 </ul>
             </div>

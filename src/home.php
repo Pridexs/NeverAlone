@@ -38,7 +38,7 @@
                     <li class="menu-item-divided pure-menu-selected"><a href="home.php">Página Inicial</a></li>
                     <li><a href="addentretenimento.php">Adicionar Entretenimento</a></li>
                     <li><a href="listaentretenimento.php">Lista Entretenimento</a></li>
-                    <li><a href="#">Buscar Usuários</a></li>
+                    <li><a href="buscarusuario.php">Buscar Usuários</a></li>
                     <li><a href="opcoes.php">Opções</a></li>
                 </ul>
             </div>
