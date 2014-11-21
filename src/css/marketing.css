@@ -24,6 +24,10 @@ label {
     color: #34495e;
 }
 
+.redtext {
+    color: red;
+}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;

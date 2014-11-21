@@ -137,6 +137,8 @@
                         <button type="submit" class="pure-button">Login</button>
                     </fieldset>
                 </form>
+
+                <?php if($login_failed): ?> <p style="color: red;">O login falhou. Seu e-mail ou senha estão incorretos.</p> <?php endif ?>
             </div>
 
             <div class="l-box-lrg pure-u-1 pure-u-md-3-5">

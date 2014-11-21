@@ -2,6 +2,7 @@
 
     require("adm\common.php");
 
+    $email_taken = false; 
 
     if(!empty($_POST)) {
 
@@ -19,7 +20,7 @@
         } 
          
         $row = $stmt->fetch(); 
-        $email_taken = false; 
+        
         if($row) { 
             $email_taken = true;
         }
@@ -105,7 +106,7 @@
     <div class="register-form">
         <form method="post" id="registerForm"> 
             <p class="contact"><label for="name">Name</label></p> 
-            <input id="name" name="nome" placeholder="Nome e Sobrenome" required="" tabindex="1" type="text"> 
+            <input id="name" name="nome" placeholder="Nome e Sobrenome" required="" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['nome'] .  "\""); } ?> tabindex="1" type="text"> 
              
             <p class="contact"><label for="email">Email</label></p> 
             <input id="email" name="email" placeholder="exemplo@dominio.com" required="" type="email"> 
@@ -114,10 +115,10 @@
             <input type="password" id="password" name="password" required=""> 
 
             <p class="contact"><label for="numeroCelular">Numero Celular</label></p> 
-            <input id="numeroCelular" name="numeroCelular" required=""> 
+            <input id="numeroCelular" name="numeroCelular" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['numeroCelular'] .  "\""); } ?> required=""> 
 
             <fieldset> 
-                <label>Dia<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Dia" required=""></label>
+                <label>Dia<input class="birthday" maxlength="2" name="BirthDay" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['BirthDay'] .  "\""); } ?> placeholder="Dia" required=""></label>
                 <label>Mês</label>
                 <label class="month"> 
                 <select class="select-style" name="BirthMonth">
@@ -135,7 +136,7 @@
                 <option value="12" >Dezembro</option>
                 </label>
                 </select>   
-                <label>Ano<input class="birthyear" maxlength="4" name="BirthYear" placeholder="Ano" required=""></label>
+                <label>Ano<input class="birthyear" maxlength="4" name="BirthYear" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['BirthYear'] .  "\""); } ?> placeholder="Ano" required=""></label>
             </fieldset>
             
             <select id="estado" class="select-style gender" name="estado">
@@ -155,6 +156,9 @@
 
             <input class="buttom" name="submit" id="submit" tabindex="5" value="Registrar!" type="submit">      
         </form> 
+        <?php if($email_taken): ?>
+        <p  style="color: red;">E-mail já cadastrado!</p>
+        <?php endif ?>
     </div>
 </div>
 </body>
