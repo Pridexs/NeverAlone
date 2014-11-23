@@ -59,6 +59,8 @@
 
 <html lang="en">
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'> <!--fonte para titulo-->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A layout example that shows off a responsive product landing page.">
@@ -90,7 +92,7 @@
 
 <div class="splash-container">
     <div class="splash">
-        <h1 class="splash-head">Never Alone</h1>
+        <h1 class="splash-head">Never &nbsp &nbsp<a class="middle-title">be</a>&nbsp &nbsp Alone</h1>
         <p class="splash-subhead">
             A melhor maneira, para conhecer as melhores pessoas
         </p>
