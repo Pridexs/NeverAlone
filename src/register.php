@@ -92,12 +92,12 @@
 
 <div class="header">
     <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Your Site</a>
+        <a class="pure-menu-heading" href="index.php">Never Alone</a>
 
         <ul>
-            <li class="pure-menu-selected"><a href="index.php">Home</a></li>
-            <li><a href="#">Tour</a></li>
-            <li><a href="register.php">Sign Up</a></li>
+            <li class="pure-menu-selected"><a href="index.php">Início</a></li>
+            <li><a href="index.php#sobre">O que é?</a></li>
+            <li><a href="index.php#login">Entrar</a></li>
         </ul>
     </div>
 </div>
@@ -105,19 +105,20 @@
 <div class="container">
     <div class="register-form">
         <form method="post" id="registerForm"> 
-            <p class="contact"><label for="name">Name</label></p> 
+            <p class="contact"><label for="name">Nome</label></p> 
             <input id="name" name="nome" placeholder="Nome e Sobrenome" required="" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['nome'] .  "\""); } ?> tabindex="1" type="text"> 
              
             <p class="contact"><label for="email">Email</label></p> 
             <input id="email" name="email" placeholder="exemplo@dominio.com" required="" type="email"> 
              
             <p class="contact"><label for="password">Senha</label></p> 
-            <input type="password" id="password" name="password" required=""> 
+            <input type="password" id="password" name="password" placeholder="senha..." required=""> 
 
             <p class="contact"><label for="numeroCelular">Numero Celular</label></p> 
-            <input id="numeroCelular" name="numeroCelular" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['numeroCelular'] .  "\""); } ?> required=""> 
+            <input id="numeroCelular" name="numeroCelular" placeholder="(XX) xxxx-xxxx" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['numeroCelular'] .  "\""); } ?> required=""> 
 
             <fieldset> 
+                <p class="contact"><label>Data de Nascimento</label></p>
                 <label>Dia<input class="birthday" maxlength="2" name="BirthDay" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['BirthDay'] .  "\""); } ?> placeholder="Dia" required=""></label>
                 <label>Mês</label>
                 <label class="month"> 
