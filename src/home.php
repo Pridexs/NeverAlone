@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
     <link rel="stylesheet" href="css/side-menu.css">
+    <link rel="stylesheet" href="css/marketing.css">
 </head>
 
 <body>
@@ -51,28 +52,46 @@
             </div>
 
             <div class="content">
-                <h2 class="content-subhead">Informações:</h2>
+                <h2 class="content-subhead">Simples assim</h2>
                 <p>
-                    Bla bla bla.
+                    Esta é a página inicial do Never Alone! Você pode agora navegar à vontade, cadastrar seus hobbies, seus filmes favoritos, jogos, tudo
+                    aquilo que caracterize você. O trabalho pesado pode deixar por nossa conta ;)<br/><br/> Caso ainda estejas com dúvidas, basta seguir as
+                    instruções abaixo.<br/>Boa aventura!
                 </p>
 
-                <h2 class="content-subhead">Mais informações:</h2>
-                <p>
-                    Bla bla bla.
-                </p>
-
-                <div class="pure-g">
-                    <div class="pure-u-1-4">
-                        <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
+                <div class="pure-g divTuto">
+                    <div class="pure-u-1-4 textTuto">
+                        <img class="pure-img-responsive" src="img/common/editar.png" alt="editar">
+                        <p align="justify">
+                            <strong>Passo 1</strong><br/>
+                            Adicione seus interesses! No menú ao lado você pode facilmente adicionar um entretenimento,
+                            e caso ele não exista em nosso banco de dados, você pode adicionar um novo!
+                        </p>
                     </div>
-                    <div class="pure-u-1-4">
-                        <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2813/9069585985_80da8db54f.jpg" alt="Train">
+                    <div class="pure-u-1-4 textTuto">
+                        <img class="pure-img-responsive" src="img/common/buscar.png" alt="buscar">
+                        <p align="justify">
+                            <strong>Passo 2</strong><br/>
+                            Chegou a grande hora! Clicando em selecionando "Buscar Usuários" no menú, nós moveremos montanhas para achar o maior número
+                            de usuários que tenham interesses em comum com o seu! Caso você venha a adicionar algum entretenimento após, basta realizar 
+                            uma nova busca!
+                        </p>
                     </div>
-                    <div class="pure-u-1-4">
-                        <img class="pure-img-responsive" src="http://farm6.staticflickr.com/5456/9121446012_c1640e42d0.jpg" alt="T-Shirt Store">
+                    <div class="pure-u-1-4 textTuto">
+                        <img class="pure-img-responsive" src="img/common/adicionar.png" alt="adicionar">
+                        <p align="justify">
+                            <strong>Passo 3</strong><br/>
+                            Pronto! Você acaba de achar uma pessoa com interesse semelhante ao seu! Tudo isso em apenas 3 passos! Entre em contato e aproveite!
+                        </p>
                     </div>
-                    <div class="pure-u-1-4">
-                        <img class="pure-img-responsive" src="http://farm8.staticflickr.com/7357/9086701425_fda3024927.jpg" alt="Mountain">
+                    <div class="pure-u-1-4 textTuto">
+                        <img class="pure-img-responsive" src="img/common/meet.png" alt="encontrar">
+                        <p align="justify">
+                            <strong>Ei, pera aí!</strong><br/>
+                            Conheça essa pessoa, marque um encontro, saia, se divirta. Nós apenas criamos uma ferramenta,
+                             não se esqueça que a vida não é só aqui na internet!
+                             Aproveite!
+                        </p>
                     </div>
                 </div>
 
