@@ -67,7 +67,12 @@
         header("Location: index.php"); 
         die("home.php"); 
     }
-
+    if(isset($_POST["logout"])) {
+        # efetua logout
+        session_destroy();
+        header("Location: index.php"); 
+        die("home.php");
+    }
 
 ?> 
 
@@ -112,8 +117,11 @@
             <div class="content">
 
                 <h2 class="content-subhead">Opções:</h2>
+                <form  method="post" id="logout" > 
+                    <p><label>Sair do Never Alone :(<br></label><button type="submit" name="logout" class="pure-button">Sair</button></p>
+                </form>
                 <form  method="post" id="delete_account" > 
-                    <p><label>Excluir Conta<br></label><button type="submit" name="excluir_conta" class="pure-button">Excluir</button></p>
+                    <p><label>Excluir Conta D:<br></label><button type="submit" name="excluir_conta" class="pure-button">Excluir</button></p>
                 </form>
             </div>
         </div>
