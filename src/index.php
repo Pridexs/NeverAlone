@@ -78,12 +78,12 @@
 
 <div class="header">
     <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Your Site</a>
+        <a class="pure-menu-heading" href="#">Never Alone</a>
 
         <ul>
-            <li class="pure-menu-selected"><a href="#">Home</a></li>
-            <li><a href="#">Tour</a></li>
-            <li><a href="register.php">Sign Up</a></li>
+            <li class="pure-menu-selected"><a href="#">Início</a></li>
+            <li><a href="#sobre">O que é?</a></li>
+            <li><a href="#login">Entrar</a></li>
         </ul>
     </div>
 </div>
@@ -92,36 +92,35 @@
     <div class="splash">
         <h1 class="splash-head">Never Alone</h1>
         <p class="splash-subhead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            A melhor maneira, para conhecer as melhores pessoas
         </p>
         <p>
-            <a href="register.php" class="pure-button pure-button-primary">Get Started</a>
+            <a href="register.php" class="pure-button pure-button-primary">participar</a>
         </p>
     </div>
 </div>
 
-<div class="content-wrapper">
+<div class="content-wrapper"><a name="sobre">
     
 
     <div class="ribbon l-box-lrg pure-g">
         <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
-            <img class="pure-img-responsive" alt="File Icons" width="300" src="img/common/file-icons.png">
+            <img class="pure-img-responsive" alt="File Icons" width="230" src="img/common/users2.png">
         </div>
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
 
-            <h2 class="content-head content-head-ribbon">Laboris nisi ut aliquip.</h2>
+            <h2 class="content-head content-head-ribbon"></a>Conheça o Never Alone</h2>
 
             <p>
-                Aurelio Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor.
+                Nosso objetivo é fazer com que ninguém se sinta sozinho. Utilizamos de um grande banco de dados
+                para termos certeza de que há alguém com os mesmos gostos que você. Talvez um futuro grande amigo, 
+                ou então, uma futura namorada ;) <br/>Está esperando o que? Cadastre-se! Entre nessa rede e conheça as melhores pessoas.
             </p>
         </div>
     </div>
 
-    <div class="content">
-        <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2>
+    <div class="content"><a name="login">
+        <h2 class="content-head is-center">A melhor maneira, para conhecer as melhores pessoas</h2>
 
         <div class="pure-g">
             <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
@@ -129,12 +128,12 @@
                     <fieldset>
 
                         <label for="name">Email</label>
-                        <input id="name" name="email" type="text" placeholder="Username">
+                        <input id="name" name="email" type="text" placeholder="exemplo@teste.com.br">
 
-                        <label for="password">Password</label>
-                        <input id="password" name="password" type="password" placeholder="Password">
+                        <label for="password">Senha</label>
+                        <input id="password" name="password" type="password" placeholder="Senha">
 
-                        <button type="submit" class="pure-button">Login</button>
+                        <button type="submit" class="pure-button">Entrar</button>
                     </fieldset>
                 </form>
 
@@ -142,18 +141,18 @@
             </div>
 
             <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-                <h4>Contact Us</h4>
+                <h4>Ainda é um BETA :/</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.
+                    Estamos em período de testes, então gostaríamos de pedir sua compreensão:D<br/>
+                    Never Alone está operando e cheio de atividade, porém eventuais falhas podem aparecer,
+                    assim que estivermos 100%, você, que nos acompanhou desde o começo, será o primeiro a saber. 
                 </p>
 
-                <h4>More Information</h4>
+                <h4>O seu DEVER</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                    Você tem tem apenas um dever, APROVEITAR. Curta o Never Alone, use e abuse de suas funcionalidades.
+                    Ache um novo amigo, uma namorada, um confidente. Ajude-nos a achar pessoas interessantes à você, que em troca só 
+                    exigimos sua satisfação.
                 </p>
             </div>
         </div>
@@ -161,7 +160,7 @@
     </div>
 
     <div class="footer l-box is-center">
-        Made with love by the YUI Team.
+        Never Alone by Team Balão Vermelho.
     </div>
 
 </div>
