@@ -114,7 +114,7 @@
             <p>
                 Nosso objetivo é fazer com que ninguém se sinta sozinho. Utilizamos de um grande banco de dados
                 para termos certeza de que há alguém com os mesmos gostos que você. Talvez um futuro grande amigo, 
-                ou então, uma futura namorada ;) <br/>Está esperando o que? Cadastre-se! Entre nessa rede e conheça as melhores pessoas.
+                ou então, uma futura namorada ;) <br/>Está esperando o que? <a href="register.php" style="color: #AAA">Cadastre-se!</a> Entre nessa rede e conheça as melhores pessoas.
             </p>
         </div>
     </div>
