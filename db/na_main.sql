@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Nov-2014 às 17:20
+-- Generation Time: 23-Nov-2014 às 18:14
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `filmes` (
   `tema` varchar(50) NOT NULL,
   `nome` varchar(40) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `filmes`
@@ -68,7 +68,12 @@ INSERT INTO `filmes` (`ID`, `ano`, `tipo`, `tema`, `nome`) VALUES
 (3, 2000, 'Comédia', 'Aventura', 'Jumanji'),
 (4, 2002, 'Action', 'Spy', 'The Bourne Identity'),
 (5, 2012, 'Aventura', 'Fantasia', 'O Hobbit'),
-(6, 2014, 'Aventura', 'Sci-Fi', 'Guardiões da Galáxia');
+(6, 2014, 'Aventura', 'Sci-Fi', 'Guardiões da Galáxia'),
+(7, 2014, 'Ficção científica', 'Viagem no espaço', 'Interestelar'),
+(8, 2014, 'Comédia', 'Família', 'Vizinhos'),
+(9, 2014, 'Ação', 'Aventura', 'Jogos Vorazes: A Esperança Parte 1'),
+(10, 2014, 'Ação, Ficção científica', 'Fantasia', 'Drácula'),
+(11, 2014, 'Comédia', 'Policial', 'Anjos da Lei 2');
 
 -- --------------------------------------------------------
 
@@ -134,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `sexo` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `numeroCelular` char(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `users`
@@ -142,7 +147,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `password`, `salt`, `email`, `nome`, `estado`, `cidade`, `pais`, `dataNasc`, `sexo`, `numeroCelular`) VALUES
 (1, '00701d7d9310bbaa3b030979ad0d827a81065eba8f719f2480aaf6ec1b9a3e66', '37a20f5d540a393e', 'alehstk@gmail.com', 'Alexandre Maros', 'SC', 'Rio Negrinho', '', '1995-01-01', 'M', '4792318900'),
-(2, '9aaf76b3280d2319f719871b7056c2c71ab11ad49aa1c8adbe877228034c7747', '63b0054cac29f78', 'grott.aurelio@gmail.com', 'Aurelio Grott Neto', 'SC', 'Laguna', '', '1995-05-05', 'M', '+554899617317');
+(2, '9aaf76b3280d2319f719871b7056c2c71ab11ad49aa1c8adbe877228034c7747', '63b0054cac29f78', 'grott.aurelio@gmail.com', 'Aurelio Grott Neto', 'SC', 'Laguna', '', '1995-05-05', 'M', '+554899617317'),
+(3, '11f6c5c63d0b374775451497cdfc8807654ad13a1ae3f07f913b576a1f16d542', '71c866833ea4edad', 'gabrieldominicoo@gmail.com', 'Gabriel Dominico', 'SC', 'Canoinhas', '', '1995-06-06', 'M', '04796989476');
 
 -- --------------------------------------------------------
 
