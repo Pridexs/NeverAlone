@@ -115,7 +115,7 @@
             <input type="password" id="password" name="password" placeholder="senha..." required=""> 
 
             <p class="contact"><label for="numeroCelular">Numero Celular</label></p> 
-            <input id="numeroCelular" name="numeroCelular" placeholder="(XX) xxxx-xxxx" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['numeroCelular'] .  "\""); } ?> required=""> 
+            <input id="numeroCelular" name="numeroCelular" <?php if(!empty($_POST)) { echo("value =\"" . $_POST['numeroCelular'] .  "\""); } ?> required=""> 
 
             <fieldset> 
                 <p class="contact"><label>Data de Nascimento</label></p>
@@ -148,6 +148,7 @@
 
             </select><br><br>
 
+            <p class="contact"><label>Sexo</label></p>
             <select class="select-style gender" name="gender">
                 <option value="select"></option>
                 <option value="M">Masculino</option>
