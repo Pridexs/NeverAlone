@@ -17,7 +17,7 @@
         $tema = $_POST['tema'];
         $qtdParticipantes = $_POST['qtdParticipantes'];
 
-        $query = "INSERT INTO Jogos (`nome`, `tipoJogo`, `qtdParticipantes`, `temaJogo`) VALUES (:nome, :tipo, :qtdParticipantes, :tema)";
+        $query = "INSERT INTO jogos (`nome`, `tipoJogo`, `qtdParticipantes`, `temaJogo`) VALUES (:nome, :tipo, :qtdParticipantes, :tema)";
         $query_params = array(
             ':nome' => $nome_parametro,
             ':tipo' => $tipo,

@@ -16,7 +16,7 @@
         $nome_parametro = $_POST['nome'];
         $adicionais = $_POST['adicionais'];
 
-        $query = "INSERT INTO Outros (`nome`, `dadosAdicionais`) VALUES (:nome, :adicionais)";
+        $query = "INSERT INTO outros (`nome`, `dadosAdicionais`) VALUES (:nome, :adicionais)";
         $query_params = array(
             ':nome' => $nome_parametro,
             ':adicionais' => $adicionais

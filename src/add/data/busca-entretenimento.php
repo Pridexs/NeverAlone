@@ -7,7 +7,7 @@
     }
 
     function buscaFilmes($param, $db) {
-        $query = "SELECT * FROM Filmes WHERE nome LIKE :nome";
+        $query = "SELECT * FROM filmes WHERE nome LIKE :nome";
         $query_params = array( 
             ':nome' => '%' . $param . '%'
         ); 
@@ -32,7 +32,7 @@
     }
 
     function buscaJogos($param, $db) {
-        $query = "SELECT * FROM Jogos WHERE nome LIKE :nome";
+        $query = "SELECT * FROM jogos WHERE nome LIKE :nome";
         $query_params = array( 
             ':nome' => '%' . $param . '%'
         ); 
@@ -58,7 +58,7 @@
     }
     
     function buscaEsportes($param, $db) {
-        $query = "SELECT * FROM Esportes WHERE nome LIKE :nome";
+        $query = "SELECT * FROM esportes WHERE nome LIKE :nome";
         $query_params = array( 
             ':nome' => '%' . $param . '%'
         ); 
@@ -82,7 +82,7 @@
     }
 
     function buscaOutros($param, $db) {
-        $query = "SELECT * FROM Outros WHERE nome LIKE :nome";
+        $query = "SELECT * FROM outros WHERE nome LIKE :nome";
         $query_params = array( 
             ':nome' => '%' . $param . '%'
         ); 

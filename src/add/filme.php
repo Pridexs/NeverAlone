@@ -17,7 +17,7 @@
         $tema = $_POST['tema'];
         $data = $_POST['ano'];
 
-        $query = "INSERT INTO Filmes (`nome`, `tipo`, `ano`, `tema`) VALUES (:nome, :tipo, :ano, :tema)";
+        $query = "INSERT INTO filmes (`nome`, `tipo`, `ano`, `tema`) VALUES (:nome, :tipo, :ano, :tema)";
         $query_params = array(
             ':nome' => $nome_parametro,
             ':tipo' => $tipo,

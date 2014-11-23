@@ -67,6 +67,7 @@
         header("Location: index.php"); 
         die("home.php"); 
     }
+    
     if(isset($_POST["logout"])) {
         # efetua logout
         session_destroy();
