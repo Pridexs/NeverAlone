@@ -4,7 +4,7 @@
 
     //Database Information 
     $username = "root";
-    $password = "root";
+    $password = "";
     $host = "localhost";
     $dbname = "na_main";
 
