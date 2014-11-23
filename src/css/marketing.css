@@ -277,6 +277,12 @@ a.pure-button-primary {
         font-size: 250%;
     }
 
+    .middle-title {
+        font-family: 'Shadows Into Light', cursive;
+        color: #FF0604;
+        text-transform: lowercase;
+    }
+
 
     /* We remove the border-separator assigned to .l-box-lrg */
     .l-box-lrg {
